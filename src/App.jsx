@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import BotCollection from './BotCollection';
 import YourBotArmy from './YourBotArmy';
+import BotFilter from './BotFilter';
 
 
 const App = () => {
-  const [bots, setBots] = useState([]); 
-  const [yourArmy, setYourArmy] = useState([]); 
-  const [isArmyVisible, setIsArmyVisible] = useState(false);
+  const [bots, setBots] = useState([]) 
+  const [yourArmy, setYourArmy] = useState([]) 
+  const [isArmyVisible, setIsArmyVisible] = useState(false)
+  const [selectedClass, setSelectedClass] = useState('')
 
   // Fetch bots from the JSON 
   useEffect(() => {
@@ -14,6 +16,8 @@ const App = () => {
       .then(response => response.json())
       .then(data => setBots(data))
   }, []);
+
+  const classes = [...new Set(bots.map(bot => bot.bot_class))] // get unique classes
 
   // enlist  bot into army
   function enlistBot(bot){
@@ -41,11 +45,14 @@ const App = () => {
     setIsArmyVisible(!isArmyVisible);
   }
 
+  const filteredBots = selectedClass ? bots.filter(bot => bot.bot_class === selectedClass) : bots;
+
   return (
     <div>
       <h1>Bot Battlr</h1>
       <button onClick={handleToggle} className='btn-army'>{isArmyVisible ? "Hide My Bots" : "Show My Bots"}</button>
-      <BotCollection bots={bots} enlistBot={enlistBot} />
+      <BotFilter classes={classes} selectedClass={selectedClass} onClassChange={setSelectedClass} />
+      <BotCollection bots={filteredBots} enlistBot={enlistBot} />
       <div className={`your-bot-army ${isArmyVisible ? 'active': ''}`}></div>
       <YourBotArmy yourArmy={yourArmy} releaseBot={releaseBot} dischargeBot={dischargeBot} />
     </div>
