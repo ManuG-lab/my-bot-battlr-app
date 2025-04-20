@@ -41,7 +41,8 @@ function App() {
   return(
     <div>
       <h1>Bot Battlr</h1>
-      
+
     </div>
   )
 }
+export default App;
