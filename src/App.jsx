@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import BotCollection from "./BotCollection";
 
 function App() {
  const [bots, setBots] = useState([]);
@@ -17,7 +18,7 @@ function App() {
     if (!yourArmy.includes(bot)){
       setYourArmy([...yourArmy, bot])
     } else {
-      alert("You already enlisted this bot!")
+     // alert("You already enlisted this bot!")
     }
   }
 
@@ -41,7 +42,7 @@ function App() {
   return(
     <div>
       <h1>Bot Battlr</h1>
-
+      <BotCollection bots={bots} enlistBot={enlistBot} />
     </div>
   )
 }
