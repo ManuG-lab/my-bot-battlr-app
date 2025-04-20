@@ -1,1 +1,75 @@
-/* src/styles.css */
+.body{
+    background-color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bot-card:hover{
+    background-color: gold;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scaleY(1.03);
+}
+
+h1, h2, h3{
+    text-align: center;
+}
+.bot-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+   
+}
+
+.bot-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width:100px;
+    background-color: gray;
+}
+.bot-card img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.btn-release{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding:5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+.btn-discharge{
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+.btn-release:hover{
+    background-color:black;
+}
+.btn-discharge:hover{
+    background-color: black;
+}
+
