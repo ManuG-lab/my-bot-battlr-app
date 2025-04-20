@@ -6,6 +6,7 @@ import YourBotArmy from './YourBotArmy';
 const App = () => {
   const [bots, setBots] = useState([]); 
   const [yourArmy, setYourArmy] = useState([]); 
+  const [isArmyVisible, setIsArmyVisible] = useState(false);
 
   // Fetch bots from the JSON 
   useEffect(() => {
@@ -16,8 +17,9 @@ const App = () => {
 
   // enlist  bot into army
   function enlistBot(bot){
-    if (!yourArmy.includes(bot)) {
+    if (!yourArmy.some(b => b.id === bot.id)) { 
       setYourArmy([...yourArmy, bot]);
+      //setIsArmyVisible(true); 
     }
   };
 
@@ -35,10 +37,16 @@ const App = () => {
       })
   };
 
+  function handleToggle(){
+    setIsArmyVisible(!isArmyVisible);
+  }
+
   return (
     <div>
       <h1>Bot Battlr</h1>
+      <button onClick={handleToggle} className='btn-army'>{isArmyVisible ? "Hide My Bots" : "Show My Bots"}</button>
       <BotCollection bots={bots} enlistBot={enlistBot} />
+      <div className={`your-bot-army ${isArmyVisible ? 'active': ''}`}></div>
       <YourBotArmy yourArmy={yourArmy} releaseBot={releaseBot} dischargeBot={dischargeBot} />
     </div>
   );
