@@ -17,27 +17,34 @@ const App = () => {
       .then(data => setBots(data))
   }, []);
 
-  const classes = [...new Set(bots.map(bot => bot.bot_class))] // get unique classes
-
+  const classes = [];
+for (const bot of bots) {
+    if (!classes.includes(bot.bot_class)) {
+        classes.push(bot.bot_class);
+    }
+}
   // enlist  bot into army
   function enlistBot(bot){
     if (!yourArmy.some(b => b.id === bot.id)) { 
       setYourArmy([...yourArmy, bot]);
-      //setIsArmyVisible(true); 
+      setIsArmyVisible(true); 
+      alert(`Enlisting ${bot.name}!`);
     }
   };
 
   //release  bot from  army
   function releaseBot(bot){
     setYourArmy(yourArmy.filter(b => b.id !== bot.id));
+    alert(`Releasing ${bot.name}!`);
   };
 
   //delete bot from  server
-  function dischargeBot(botId){
+  function dischargeBot(botId, bot){
     fetch(`http://localhost:8001/bots/${botId}`, { method: 'DELETE' })
       .then(() => {
         setYourArmy(yourArmy.filter(b => b.id !== botId));
         setBots(bots.filter(b => b.id !== botId));
+        alert(`Discharging ${bot.name}!`);
       })
   };
 

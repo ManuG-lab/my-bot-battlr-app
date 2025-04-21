@@ -1,4 +1,4 @@
-// src/YourBotArmy.jsx
+
 import React from 'react';
 
 const YourBotArmy = ({ yourArmy, releaseBot, dischargeBot }) => {
@@ -15,7 +15,7 @@ const YourBotArmy = ({ yourArmy, releaseBot, dischargeBot }) => {
             <p>Armor: {bot.armor}</p>
             <p>Class: {bot.bot_class}</p>
             <button onClick={() => releaseBot(bot)} className='btn-release'>Release</button>
-            <button onClick={() => dischargeBot(bot.id)} className='btn-discharge'>Discharge</button>
+            <button onClick={() => dischargeBot(bot.id)} className='btn-discharge'>Discharge (X)</button>
           </div>
         ))}
       </div>
