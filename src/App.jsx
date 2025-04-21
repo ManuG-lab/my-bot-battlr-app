@@ -53,8 +53,10 @@ const App = () => {
       <button onClick={handleToggle} className='btn-army'>{isArmyVisible ? "Hide My Bots" : "Show My Bots"}</button>
       <BotFilter classes={classes} selectedClass={selectedClass} onClassChange={setSelectedClass} />
       <BotCollection bots={filteredBots} enlistBot={enlistBot} />
-      <div className={`your-bot-army ${isArmyVisible ? 'active': ''}`}></div>
-      <YourBotArmy yourArmy={yourArmy} releaseBot={releaseBot} dischargeBot={dischargeBot} />
+      <div className={`your-bot-army ${isArmyVisible ? 'active': ''}`}>
+         <YourBotArmy yourArmy={yourArmy} releaseBot={releaseBot} dischargeBot={dischargeBot} />
+      </div>
+     
     </div>
   );
 };

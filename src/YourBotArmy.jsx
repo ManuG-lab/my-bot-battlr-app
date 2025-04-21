@@ -3,7 +3,7 @@ import React from 'react';
 
 const YourBotArmy = ({ yourArmy, releaseBot, dischargeBot }) => {
   return (
-    <div className="your-bot-army">
+    <div>
       <h2>Your Bot Army</h2>
       <div className="bot-army-list">
         {yourArmy.map(bot => (
